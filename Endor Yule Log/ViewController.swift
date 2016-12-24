@@ -11,8 +11,8 @@ import AVKit
 
 class ViewController: UIViewController {
   
-  private var playerController: AVPlayerViewController!
-  private var player: AVPlayer!
+  private weak var player: AVPlayer!
+  @IBOutlet var playerView: PlayerView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,21 +27,15 @@ class ViewController: UIViewController {
       player.seek(to: CMTime(seconds: 60, preferredTimescale: 1))
     }
     
-    // create controller
-    let controller = AVPlayerViewController()
-    controller.player = player
-    
-    self.playerController = controller
     self.player = player
+    playerView.player = player
   }
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
     // present the controller
-    present(self.playerController, animated: true) {
-      self.player.play()
-    }
+    self.player.play()
   }
 
   private func createComposition() -> AVComposition {

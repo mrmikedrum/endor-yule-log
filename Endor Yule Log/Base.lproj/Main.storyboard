@@ -17,10 +17,13 @@
                         <viewControllerLayoutGuide type="top" id="6IG-sh-fd3"/>
                         <viewControllerLayoutGuide type="bottom" id="XFS-0z-bdE"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="IPR-TA-rW1">
+                    <view key="view" contentMode="scaleToFill" id="IPR-TA-rW1" customClass="PlayerView" customModule="Endor_Yule_Log" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     </view>
+                    <connections>
+                        <outlet property="playerView" destination="IPR-TA-rW1" id="c3Y-0T-6Zp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAW-lE-OmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
