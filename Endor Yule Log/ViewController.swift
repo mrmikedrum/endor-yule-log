@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     TrackType.crackling: EndorTrack(type: .crackling, muted: false)
   ]
   
+  // MARK: setting up state
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -73,27 +75,34 @@ class ViewController: UIViewController {
     return composition
   }
   
+  // MARK: updating state
+  
   @IBOutlet weak var crackleButton: UIButton!
   @IBAction func crackle(_ sender: UIButton) {
     
     let track = self.tracks[.crackling]!
     
-    let params = AVMutableAudioMixInputParameters()
-    params.trackID = track.trackID
-    
     if track.isMuted {
       self.crackleButton.setTitle("On", for: .normal)
       track.isMuted = false
-      params.setVolume(1, at: kCMTimeZero)
-      
     } else {
       self.crackleButton.setTitle("Off", for: .normal)
       track.isMuted = true
-      params.setVolume(0, at: kCMTimeZero)
+    }
+
+    self.updateAudioMix()
+  }
+  
+  private func updateAudioMix() {
+    let mix = AVMutableAudioMix()
+    
+    for track in self.tracks.values {
+      let params = AVMutableAudioMixInputParameters()
+      params.trackID = track.trackID
+      params.setVolume(track.isMuted ? 0 : 1, at: kCMTimeZero)
+      mix.inputParameters.append(params)
     }
     
-    let mix = AVMutableAudioMix()
-    mix.inputParameters = [params]
     self.player.currentItem?.audioMix = mix
   }
 
