@@ -18,7 +18,8 @@ class ViewController: UIViewController {
   
   private var tracks = [
     TrackType.video: EndorTrack(type: .video, muted: true),
-    TrackType.crackling: EndorTrack(type: .crackling, muted: false)
+    TrackType.crackling: EndorTrack(type: .crackling, muted: false),
+    TrackType.ambient: EndorTrack(type: .ambient, muted: true)
   ]
   
   // MARK: setting up state
@@ -42,7 +43,7 @@ class ViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    
+    self.updateAudioMix()
     self.startPlayerFromBeginning()
   }
   
@@ -54,6 +55,7 @@ class ViewController: UIViewController {
   private func createComposition() -> AVComposition {
     let composition = AVMutableComposition()
     
+    // video
     let videoTrack = self.tracks[.video]!
     var track = composition.addMutableTrack(withMediaType: AVMediaTypeVideo, preferredTrackID: videoTrack.trackID)
     videoTrack.trackID = track.trackID
@@ -63,12 +65,23 @@ class ViewController: UIViewController {
     } catch {
     }
     
-    let cracklingTrack = self.tracks[.crackling]!
-    track = composition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: cracklingTrack.trackID)
-    cracklingTrack.trackID = track.trackID
+    // crackling
+    var audioTrack = self.tracks[.crackling]!
+    track = composition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: audioTrack.trackID)
+    audioTrack.trackID = track.trackID
 
     do {
-      try track.insertTimeRange(CMTimeRange(start: kCMTimeZero, duration: cracklingTrack.asset.duration), of: cracklingTrack.asset.tracks(withMediaType: AVMediaTypeAudio).first!, at: kCMTimeZero)
+      try track.insertTimeRange(CMTimeRange(start: kCMTimeZero, duration: audioTrack.asset.duration), of: audioTrack.asset.tracks(withMediaType: AVMediaTypeAudio).first!, at: kCMTimeZero)
+    } catch {
+    }
+    
+    // ambient
+    audioTrack = self.tracks[.ambient]!
+    track = composition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: audioTrack.trackID)
+    audioTrack.trackID = track.trackID
+    
+    do {
+      try track.insertTimeRange(CMTimeRange(start: kCMTimeZero, duration: audioTrack.asset.duration), of: audioTrack.asset.tracks(withMediaType: AVMediaTypeAudio).first!, at: kCMTimeZero)
     } catch {
     }
     
@@ -90,6 +103,21 @@ class ViewController: UIViewController {
       track.isMuted = true
     }
 
+    self.updateAudioMix()
+  }
+  
+  @IBOutlet weak var ambientButton: UIButton!
+  @IBAction func ambient(_ sender: UIButton) {
+    let track = self.tracks[.ambient]!
+    
+    if track.isMuted {
+      self.ambientButton.setTitle("On", for: .normal)
+      track.isMuted = false
+    } else {
+      self.ambientButton.setTitle("Off", for: .normal)
+      track.isMuted = true
+    }
+    
     self.updateAudioMix()
   }
   
