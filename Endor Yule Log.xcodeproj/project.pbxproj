@@ -14,6 +14,7 @@
 		E29DC5B91E0DEBDB00BB9D29 /* Shortened-vader.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E29DC5B81E0DEBDB00BB9D29 /* Shortened-vader.mp4 */; };
 		E29DC5BB1E0E296800BB9D29 /* crackling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E29DC5BA1E0E296800BB9D29 /* crackling.mp3 */; };
 		E29DC5BD1E0EE27F00BB9D29 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29DC5BC1E0EE27F00BB9D29 /* PlayerView.swift */; };
+		E29DC5BF1E0F184E00BB9D29 /* EndorTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29DC5BE1E0F184E00BB9D29 /* EndorTrack.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		E29DC5B81E0DEBDB00BB9D29 /* Shortened-vader.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shortened-vader.mp4"; sourceTree = "<group>"; };
 		E29DC5BA1E0E296800BB9D29 /* crackling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crackling.mp3; sourceTree = "<group>"; };
 		E29DC5BC1E0EE27F00BB9D29 /* PlayerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		E29DC5BE1E0F184E00BB9D29 /* EndorTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndorTrack.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				E29DC5A91E0DE53600BB9D29 /* AppDelegate.swift */,
 				E29DC5AB1E0DE53600BB9D29 /* ViewController.swift */,
+				E29DC5BE1E0F184E00BB9D29 /* EndorTrack.swift */,
 				E29DC5BC1E0EE27F00BB9D29 /* PlayerView.swift */,
 				E29DC5AD1E0DE53600BB9D29 /* Main.storyboard */,
 				E29DC5B01E0DE53700BB9D29 /* Assets.xcassets */,
@@ -142,6 +145,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E29DC5BF1E0F184E00BB9D29 /* EndorTrack.swift in Sources */,
 				E29DC5BD1E0EE27F00BB9D29 /* PlayerView.swift in Sources */,
 				E29DC5AC1E0DE53600BB9D29 /* ViewController.swift in Sources */,
 				E29DC5AA1E0DE53600BB9D29 /* AppDelegate.swift in Sources */,

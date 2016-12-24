@@ -11,14 +11,22 @@ import AVKit
 
 class ViewController: UIViewController {
   
-  private weak var player: AVPlayer!
   @IBOutlet var playerView: PlayerView!
+  
+  private weak var player: AVPlayer!
+  private weak var composition: AVMutableComposition!
+  
+  private var tracks = [
+    TrackType.video: EndorTrack(type: .video, muted: true),
+    TrackType.crackling: EndorTrack(type: .crackling, muted: false)
+  ]
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     // create player
-    let playerItem = AVPlayerItem(asset: self.createComposition())
+    self.createComposition()
+    let playerItem = AVPlayerItem(asset: self.composition)
     let player = AVPlayer(playerItem: playerItem)
     
     // make player loop the last minute
@@ -42,29 +50,25 @@ class ViewController: UIViewController {
     self.player.play()
   }
 
-  private func createComposition() -> AVComposition {
+  private func createComposition() {
     let composition = AVMutableComposition()
     
-    var url = Bundle.main.url(forResource: "crackling", withExtension: "mp3")!
-    var asset = AVURLAsset(url: url)
-    var track = composition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: CMPersistentTrackID(exactly: 0)!)
+    let videoTrack = self.tracks[.video]!
+    var track = composition.addMutableTrack(withMediaType: AVMediaTypeVideo, preferredTrackID: videoTrack.trackID)
     do {
-      try track.insertTimeRange(CMTimeRange(start: kCMTimeZero, duration: asset.duration), of: asset.tracks(withMediaType: AVMediaTypeAudio).first!, at: kCMTimeZero)
+      try track.insertTimeRange(CMTimeRange(start: kCMTimeZero, duration: videoTrack.asset.duration), of: videoTrack.asset.tracks(withMediaType: AVMediaTypeVideo).first!, at: kCMTimeZero)
     } catch {
-      print("damn")
     }
     
-    url = Bundle.main.url(forResource: "Shortened-vader", withExtension: "mp4")!
-    asset = AVURLAsset(url: url)
-    track = composition.addMutableTrack(withMediaType: AVMediaTypeVideo, preferredTrackID: CMPersistentTrackID(exactly: 1)!)
+    let cracklingTrack = self.tracks[.crackling]!
+    track = composition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: cracklingTrack.trackID)
 
     do {
-      try track.insertTimeRange(CMTimeRange(start: kCMTimeZero, duration: asset.duration), of: asset.tracks(withMediaType: AVMediaTypeVideo).first!, at: kCMTimeZero)
+      try track.insertTimeRange(CMTimeRange(start: kCMTimeZero, duration: cracklingTrack.asset.duration), of: cracklingTrack.asset.tracks(withMediaType: AVMediaTypeAudio).first!, at: kCMTimeZero)
     } catch {
-      print("damn")
     }
     
-    return composition
+    self.composition = composition
   }
 
 }
