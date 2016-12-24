@@ -34,7 +34,11 @@ class ViewController: UIViewController {
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
     
-    // present the controller
+    self.startPlayerFromBeginning()
+  }
+  
+  private func startPlayerFromBeginning() {
+    self.player.seek(to: kCMTimeZero)
     self.player.play()
   }
 
