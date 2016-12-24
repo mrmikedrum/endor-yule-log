@@ -54,6 +54,8 @@ class ViewController: UIViewController {
     
     let videoTrack = self.tracks[.video]!
     var track = composition.addMutableTrack(withMediaType: AVMediaTypeVideo, preferredTrackID: videoTrack.trackID)
+    videoTrack.trackID = track.trackID
+    
     do {
       try track.insertTimeRange(CMTimeRange(start: kCMTimeZero, duration: videoTrack.asset.duration), of: videoTrack.asset.tracks(withMediaType: AVMediaTypeVideo).first!, at: kCMTimeZero)
     } catch {
@@ -61,6 +63,7 @@ class ViewController: UIViewController {
     
     let cracklingTrack = self.tracks[.crackling]!
     track = composition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: cracklingTrack.trackID)
+    cracklingTrack.trackID = track.trackID
 
     do {
       try track.insertTimeRange(CMTimeRange(start: kCMTimeZero, duration: cracklingTrack.asset.duration), of: cracklingTrack.asset.tracks(withMediaType: AVMediaTypeAudio).first!, at: kCMTimeZero)
