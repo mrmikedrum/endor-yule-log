@@ -72,6 +72,30 @@ class ViewController: UIViewController {
     
     return composition
   }
+  
+  @IBOutlet weak var crackleButton: UIButton!
+  @IBAction func crackle(_ sender: UIButton) {
+    
+    let track = self.tracks[.crackling]!
+    
+    let params = AVMutableAudioMixInputParameters()
+    params.trackID = track.trackID
+    
+    if track.isMuted {
+      self.crackleButton.setTitle("On", for: .normal)
+      track.isMuted = false
+      params.setVolume(1, at: kCMTimeZero)
+      
+    } else {
+      self.crackleButton.setTitle("Off", for: .normal)
+      track.isMuted = true
+      params.setVolume(0, at: kCMTimeZero)
+    }
+    
+    let mix = AVMutableAudioMix()
+    mix.inputParameters = [params]
+    self.player.currentItem?.audioMix = mix
+  }
 
 }
 

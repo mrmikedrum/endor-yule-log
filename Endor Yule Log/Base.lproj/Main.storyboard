@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="tvOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,8 +21,39 @@
                     <view key="view" contentMode="scaleToFill" id="IPR-TA-rW1" customClass="PlayerView" customModule="Endor_Yule_Log" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="1920" height="1080"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="LAn-B0-Z2f">
+                                <rect key="frame" x="20" y="960" width="1880" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crackling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZq-o0-EPC">
+                                        <rect key="frame" x="890" y="0.0" width="101" height="29"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuN-IO-Q0U">
+                                        <rect key="frame" x="875" y="29" width="130" height="71"/>
+                                        <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                        <state key="normal" title="On"/>
+                                        <connections>
+                                            <action selector="crackle:" destination="oQc-TQ-iXD" eventType="primaryActionTriggered" id="H9V-Oa-VIW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="rlL-VS-lQm"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="XFS-0z-bdE" firstAttribute="top" secondItem="LAn-B0-Z2f" secondAttribute="bottom" constant="20" id="JdN-eQ-bhS"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="LAn-B0-Z2f" secondAttribute="trailing" id="jak-rQ-ZYj"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="LAn-B0-Z2f" secondAttribute="leading" id="p7f-1d-by5"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="crackleButton" destination="JuN-IO-Q0U" id="aWt-Rc-YlV"/>
                         <outlet property="playerView" destination="IPR-TA-rW1" id="c3Y-0T-6Zp"/>
                     </connections>
                 </viewController>
