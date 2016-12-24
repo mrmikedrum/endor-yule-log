@@ -11,6 +11,8 @@
 		E29DC5AC1E0DE53600BB9D29 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E29DC5AB1E0DE53600BB9D29 /* ViewController.swift */; };
 		E29DC5AF1E0DE53600BB9D29 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E29DC5AD1E0DE53600BB9D29 /* Main.storyboard */; };
 		E29DC5B11E0DE53700BB9D29 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E29DC5B01E0DE53700BB9D29 /* Assets.xcassets */; };
+		E29DC5B91E0DEBDB00BB9D29 /* Shortened-vader.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E29DC5B81E0DEBDB00BB9D29 /* Shortened-vader.mp4 */; };
+		E29DC5BB1E0E296800BB9D29 /* crackling.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E29DC5BA1E0E296800BB9D29 /* crackling.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +22,8 @@
 		E29DC5AE1E0DE53600BB9D29 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E29DC5B01E0DE53700BB9D29 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E29DC5B21E0DE53700BB9D29 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E29DC5B81E0DEBDB00BB9D29 /* Shortened-vader.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Shortened-vader.mp4"; sourceTree = "<group>"; };
+		E29DC5BA1E0E296800BB9D29 /* crackling.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crackling.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,8 @@
 				E29DC5AB1E0DE53600BB9D29 /* ViewController.swift */,
 				E29DC5AD1E0DE53600BB9D29 /* Main.storyboard */,
 				E29DC5B01E0DE53700BB9D29 /* Assets.xcassets */,
+				E29DC5B81E0DEBDB00BB9D29 /* Shortened-vader.mp4 */,
+				E29DC5BA1E0E296800BB9D29 /* crackling.mp3 */,
 				E29DC5B21E0DE53700BB9D29 /* Info.plist */,
 			);
 			path = "Endor Yule Log";
@@ -119,6 +125,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E29DC5B91E0DEBDB00BB9D29 /* Shortened-vader.mp4 in Resources */,
+				E29DC5BB1E0E296800BB9D29 /* crackling.mp3 in Resources */,
 				E29DC5B11E0DE53700BB9D29 /* Assets.xcassets in Resources */,
 				E29DC5AF1E0DE53600BB9D29 /* Main.storyboard in Resources */,
 			);
