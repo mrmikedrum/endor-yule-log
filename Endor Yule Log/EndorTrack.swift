@@ -27,10 +27,9 @@ class EndorTrack {
     switch type {
     case .video:
       self.asset = AVURLAsset(url: Bundle.main.url(forResource: "Shortened-vader", withExtension: "mp4")!)
-      self.trackID = CMPersistentTrackID(exactly: TrackType.video.rawValue)!
     case .crackling:
       self.asset = AVURLAsset(url: Bundle.main.url(forResource: "crackling", withExtension: "mp3")!)
-      self.trackID = CMPersistentTrackID(exactly: TrackType.crackling.rawValue)!
     }
+    self.trackID = CMPersistentTrackID(exactly: type.rawValue)!
   }
 }

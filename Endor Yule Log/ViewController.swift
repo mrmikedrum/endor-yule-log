@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AVKit
+import AVFoundation
 
 class ViewController: UIViewController {
   
@@ -25,8 +25,7 @@ class ViewController: UIViewController {
     super.viewDidLoad()
     
     // create player
-    self.createComposition()
-    let playerItem = AVPlayerItem(asset: self.composition)
+    let playerItem = AVPlayerItem(asset: self.createComposition())
     let player = AVPlayer(playerItem: playerItem)
     
     // make player loop the last minute
@@ -50,7 +49,7 @@ class ViewController: UIViewController {
     self.player.play()
   }
 
-  private func createComposition() {
+  private func createComposition() -> AVComposition {
     let composition = AVMutableComposition()
     
     let videoTrack = self.tracks[.video]!
@@ -68,7 +67,7 @@ class ViewController: UIViewController {
     } catch {
     }
     
-    self.composition = composition
+    return composition
   }
 
 }
