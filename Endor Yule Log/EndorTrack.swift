@@ -12,7 +12,8 @@ import AVFoundation
 enum TrackType: Int {
   case video,
   crackling,
-  ambient
+  ambient,
+  vader
 }
 
 class EndorTrack {
@@ -32,6 +33,8 @@ class EndorTrack {
       self.asset = AVURLAsset(url: Bundle.main.url(forResource: "crackling", withExtension: "mp3")!)
     case .ambient:
       self.asset = AVURLAsset(url: Bundle.main.url(forResource: "ambient", withExtension: "m4a")!)
+    case .vader:
+      self.asset = AVURLAsset(url: Bundle.main.url(forResource: "vader", withExtension: "wav")!)
     }
     self.trackID = CMPersistentTrackID(exactly: type.rawValue)!
   }

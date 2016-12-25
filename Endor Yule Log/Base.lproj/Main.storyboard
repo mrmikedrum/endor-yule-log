@@ -26,16 +26,16 @@
                                 <rect key="frame" x="20" y="960" width="1880" height="100"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ymg-XX-yJB">
-                                        <rect key="frame" x="0.0" y="0.0" width="936" height="100"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="621" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ambient" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkA-Jg-X8d" userLabel="Ambient">
-                                                <rect key="frame" x="409" y="0.0" width="119" height="39"/>
+                                                <rect key="frame" x="251" y="0.0" width="119" height="39"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UCc-18-aCV">
-                                                <rect key="frame" x="401" y="47" width="135" height="53"/>
+                                                <rect key="frame" x="243" y="47" width="135" height="53"/>
                                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                                 <state key="normal" title="Off"/>
                                                 <connections>
@@ -45,20 +45,39 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sdu-Al-FFa">
-                                        <rect key="frame" x="944" y="0.0" width="936" height="100"/>
+                                        <rect key="frame" x="629" y="0.0" width="622" height="100"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crackling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TZq-o0-EPC">
-                                                <rect key="frame" x="402" y="0.0" width="133" height="39"/>
+                                                <rect key="frame" x="245" y="0.0" width="133" height="39"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JuN-IO-Q0U">
-                                                <rect key="frame" x="403" y="47" width="130" height="53"/>
+                                                <rect key="frame" x="246" y="47" width="130" height="53"/>
                                                 <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
                                                 <state key="normal" title="On"/>
                                                 <connections>
                                                     <action selector="crackle:" destination="oQc-TQ-iXD" eventType="primaryActionTriggered" id="H9V-Oa-VIW"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="eWQ-BK-aoF">
+                                        <rect key="frame" x="1259" y="0.0" width="621" height="100"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vader" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZn-yx-aw6">
+                                                <rect key="frame" x="269" y="0.0" width="83" height="39"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k00-L8-QGI">
+                                                <rect key="frame" x="243" y="47" width="135" height="53"/>
+                                                <inset key="contentEdgeInsets" minX="40" minY="20" maxX="40" maxY="20"/>
+                                                <state key="normal" title="Off"/>
+                                                <connections>
+                                                    <action selector="vader:" destination="oQc-TQ-iXD" eventType="primaryActionTriggered" id="BfP-9f-1qe"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -80,6 +99,7 @@
                         <outlet property="ambientButton" destination="UCc-18-aCV" id="wNU-fw-MV9"/>
                         <outlet property="crackleButton" destination="JuN-IO-Q0U" id="aWt-Rc-YlV"/>
                         <outlet property="playerView" destination="IPR-TA-rW1" id="c3Y-0T-6Zp"/>
+                        <outlet property="vaderButton" destination="k00-L8-QGI" id="kDG-fC-kn4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wAW-lE-OmJ" userLabel="First Responder" sceneMemberID="firstResponder"/>

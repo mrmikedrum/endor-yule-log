@@ -19,7 +19,8 @@ class ViewController: UIViewController {
   private var tracks = [
     TrackType.video: EndorTrack(type: .video, muted: true),
     TrackType.crackling: EndorTrack(type: .crackling, muted: false),
-    TrackType.ambient: EndorTrack(type: .ambient, muted: true)
+    TrackType.ambient: EndorTrack(type: .ambient, muted: true),
+    TrackType.vader: EndorTrack(type: .vader, muted: true)
   ]
   
   // MARK: setting up state
@@ -85,6 +86,16 @@ class ViewController: UIViewController {
     } catch {
     }
     
+    // vader
+    audioTrack = self.tracks[.vader]!
+    track = composition.addMutableTrack(withMediaType: AVMediaTypeAudio, preferredTrackID: audioTrack.trackID)
+    audioTrack.trackID = track.trackID
+    
+    do {
+      try track.insertTimeRange(CMTimeRange(start: kCMTimeZero, duration: audioTrack.asset.duration), of: audioTrack.asset.tracks(withMediaType: AVMediaTypeAudio).first!, at: kCMTimeZero)
+    } catch {
+    }
+    
     return composition
   }
   
@@ -120,6 +131,22 @@ class ViewController: UIViewController {
     
     self.updateAudioMix()
   }
+  
+  @IBOutlet weak var vaderButton: UIButton!
+  @IBAction func vader(_ sender: UIButton) {
+    let track = self.tracks[.vader]!
+    
+    if track.isMuted {
+      self.vaderButton.setTitle("On", for: .normal)
+      track.isMuted = false
+    } else {
+      self.vaderButton.setTitle("Off", for: .normal)
+      track.isMuted = true
+    }
+    
+    self.updateAudioMix()
+  }
+  
   
   private func updateAudioMix() {
     let mix = AVMutableAudioMix()
