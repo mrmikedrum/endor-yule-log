@@ -40,14 +40,21 @@ class ViewController: UIViewController {
     
     self.player = player
     playerView.player = player
+    
+    // register for app state notifications
+    let nc = NotificationCenter.default
+    nc.addObserver(forName:Notification.Name(rawValue:ApplicationStartedNotification), object:nil, queue:nil) {
+      notification in
+        self.updateAudioMix()
+        self.startPlayerFromBeginning()
+    }
+    nc.addObserver(forName:Notification.Name(rawValue:ApplicationPausedNotification), object:nil, queue:nil) {
+      [weak self] notification in
+        self?.player.pause()
+      
+    }
   }
-  
-  override func viewDidAppear(_ animated: Bool) {
-    super.viewDidAppear(animated)
-    self.updateAudioMix()
-    self.startPlayerFromBeginning()
-  }
-  
+
   private func startPlayerFromBeginning() {
     self.player.seek(to: kCMTimeZero)
     self.player.play()
